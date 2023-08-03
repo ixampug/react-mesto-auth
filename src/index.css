@@ -68,3 +68,13 @@ body {
 @import url(./blocks/popup/_fullview/popup_fullview.css);
 @import url(./blocks/popup/__picture/popup__picture.css);
 @import url(./blocks/popup/__subtitle/popup__subtitle.css);
+
+@import url(./blocks/auth/auth.css);
+@import url(./blocks/auth/__title/auth__title.css);
+@import url(./blocks/auth/__enter/auth__enter.css);
+@import url(./blocks/auth/__input/auth__input.css);
+@import url(./blocks/auth/__input/_type/_error/auth__input_type_error.css);
+@import url(./blocks/auth/__submit/auth__submit.css);
+@import url(./blocks/auth/__submit/_disabled/auth__submit_disabled.css);
+@import url(./blocks/auth/__image/auth__image.css);
+@import url(./blocks/auth/__text/auth__text.css);
