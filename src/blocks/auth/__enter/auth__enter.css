@@ -1,11 +1,11 @@
-.auth__entrance {
+.auth__enter{
     color: rgb(255, 255, 255, 1);
     text-decoration: none;
-    transition: opacity 0.2s;
-    align-self: center;
     margin-top: 15px;
+    transition: opacity 0.5s;
+    align-self: center;
   }
   
-  .auth__entrance:hover {
-    opacity: 0.6;
+  .auth__enter:hover {
+    opacity: 0.7;
   }

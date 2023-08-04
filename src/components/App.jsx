@@ -47,7 +47,7 @@ export default function App() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       api
-        .checkToken(jwt)
+        .token(jwt)
         .then((res) => {
           if (res) {
             setCurrentUserEmail(res.data.email);
@@ -183,7 +183,6 @@ export default function App() {
       });
   }
 
-  
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -191,37 +190,33 @@ export default function App() {
         {isRegistrationOpen ? (
           <Register onRegister={handleRegistration} />
         ) : (
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute loggedIn={isLoggedIn}>
-                <Main
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddCardClick}
-                  onEditAvatar={handleEditAvatarClick}
-                  cards={cards}
-                  onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
-                  onCardDelete={handleCardDelete}
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/sign-up"
-            element={<Register onRegister={handleRegistration}></Register>}
-          />
-          <Route
-            path="/sign-in"
-            element={<Login onLogin={handleLogin}> </Login>}
-          />
-          <Route
-            path="/"
-            element={<Register onRegister={handleRegistration}></Register>}
-            initial
-          />
-        </Routes>)}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute loggedIn={isLoggedIn}>
+                  <Main
+                    onEditProfile={handleEditProfileClick}
+                    onAddPlace={handleAddCardClick}
+                    onEditAvatar={handleEditAvatarClick}
+                    cards={cards}
+                    onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    onCardDelete={handleCardDelete}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/sign-up"
+              element={<Register onRegister={handleRegistration}></Register>}
+            />
+            <Route
+              path="/sign-in"
+              element={<Login onLogin={handleLogin}> </Login>}
+            />
+          </Routes>
+        )}
 
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
@@ -255,77 +250,7 @@ export default function App() {
         />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
-        <p />
       </div>
     </CurrentUserContext.Provider>
   );
-  // return (
-  //   <CurrentUserContext.Provider value={currentUser}>
-  //     <div className="page">
-  //       <Header onLogout={handleLogout} currentUserEmail={currentUserEmail} />
-  //       <Routes>
-  //         <Route
-  //           path="/"
-  //           element={
-  //             <ProtectedRoute loggedIn={isLoggedIn}>
-  //               <Main
-  //                 onEditProfile={handleEditProfileClick}
-  //                 onAddPlace={handleAddCardClick}
-  //                 onEditAvatar={handleEditAvatarClick}
-  //                 cards={cards}
-  //                 onCardClick={handleCardClick}
-  //                 onCardLike={handleCardLike}
-  //                 onCardDelete={handleCardDelete}
-  //               />
-  //             </ProtectedRoute>
-  //           }
-  //         />
-  //         <Route
-  //           path="/sign-up"
-  //           element={<Register onRegister={handleRegistration}></Register>}
-  //         />
-  //         <Route
-  //           path="/sign-in"
-  //           element={<Login onLogin={handleLogin}> </Login>}
-  //         />
-  //       </Routes>
-
-  //       <EditProfilePopup
-  //         isOpen={isEditProfilePopupOpen}
-  //         onClose={closeAllPopups}
-  //         onUpdateUser={handleUpdateUserInfo}
-  //       />
-  //       <AddPlacePopup
-  //         isOpen={isAddPlacePopupOpen}
-  //         onClose={closeAllPopups}
-  //         onAddPlace={handleAddCard}
-  //       />
-  //       <EditAvatarPopup
-  //         isOpen={isEditAvatarPopupOpen}
-  //         onClose={closeAllPopups}
-  //         onUpdateAvatar={handleUpdateAvatar}
-  //       />
-
-  //       <Footer />
-
-  //       <PopupWithForm
-  //         name="card-delete"
-  //         title="Вы уверены?"
-  //         buttonName="Да"
-  //         onClose={closeAllPopups}
-  //       />
-
-  //       <InfoTooltip
-  //         isOpen={isInfoTooltipPopupOpen}
-  //         onClose={closeAllPopups}
-  //         isSucceeded={isSucceeded}
-  //       />
-
-  //       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
-  //       <p />
-  //     </div>
-  //   </CurrentUserContext.Provider>
-  // );
 }

@@ -1,5 +1,4 @@
-
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 export default function Auth(props) {
   const [values, setValues] = useState({
@@ -9,11 +8,16 @@ export default function Auth(props) {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
+  useEffect(() => {
+    
+    const isFormValid = Object.values(errors).every((error) => !error);
+    setIsValid(isFormValid);
+  }, [errors]);
+
   const handleChange = (evt) => {
     const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: evt.target.validationMessage });
-    setIsValid(evt.target.closest("form").checkValidity());
   };
 
   const handleSubmit = (evt) => {

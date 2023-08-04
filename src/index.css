@@ -3,7 +3,7 @@ body {
   max-width: 1280px;
   min-width: 320px;
   color: #ffffff;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   margin: auto;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -78,3 +78,8 @@ body {
 @import url(./blocks/auth/__submit/_disabled/auth__submit_disabled.css);
 @import url(./blocks/auth/__image/auth__image.css);
 @import url(./blocks/auth/__text/auth__text.css);
+
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__enter/header__enter.css);
+@import url(./blocks/header/__exit/header__exit.css);
+@import url(./blocks/header/__info/header__info.css);

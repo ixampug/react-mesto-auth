@@ -90,17 +90,18 @@ class Api {
   }
 
   register(email, password) {
+    const data = { email, password };
     return fetch(`${this._backUrl}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(email, password),
+      body: JSON.stringify(data),
     }).then(this._checkResponse);
   }
 
-  checkToken(token) {
+  token(token) {
     return fetch(`${this._backUrl}/users/me`, {
       method: "GET",
       headers: {

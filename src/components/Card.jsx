@@ -5,11 +5,11 @@ export default function Card(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const isOwn = props.card.owner._id === currentUser._id;
-  const isLiked = props.card.likes.some(like => like === currentUser._id);
+  const isLiked = props.card.likes.some((like) => like === currentUser._id);
 
-  const cardLikeButtonClassName = (`card__like ${
+  const cardLikeButtonClassName = `card__like ${
     isLiked && "card__like_active"
-  }`);
+  }`;
 
   function handleLikeClick() {
     props.onCardLike(props.card);
