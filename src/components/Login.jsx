@@ -6,7 +6,7 @@ function Login(props) {
       name="login"
       onSubmit={props.onLogin}
       title="Вход"
-      buttonName="Войти"
+      buttonText="Войти"
     ></Auth>
   );
 }

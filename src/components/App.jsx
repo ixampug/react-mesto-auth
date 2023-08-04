@@ -187,9 +187,8 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
-        {isRegistrationOpen ? (
-          <Register onRegister={handleRegistration} />
-        ) : (
+         
+         
           <Routes>
             <Route
               path="/"
@@ -216,7 +215,7 @@ export default function App() {
               element={<Login onLogin={handleLogin}> </Login>}
             />
           </Routes>
-        )}
+        
 
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
