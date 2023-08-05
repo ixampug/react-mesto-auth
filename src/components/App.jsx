@@ -183,39 +183,44 @@ export default function App() {
       });
   }
 
+  function logOut() {
+    localStorage.removeItem("jwt");
+    setCurrentUserEmail("");
+    setIsLoggedIn(false);
+    navigate("/sign-in", { replace: true });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header />
-         
-         
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute loggedIn={isLoggedIn}>
-                  <Main
-                    onEditProfile={handleEditProfileClick}
-                    onAddPlace={handleAddCardClick}
-                    onEditAvatar={handleEditAvatarClick}
-                    cards={cards}
-                    onCardClick={handleCardClick}
-                    onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete}
-                  />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/sign-up"
-              element={<Register onRegister={handleRegistration}></Register>}
-            />
-            <Route
-              path="/sign-in"
-              element={<Login onLogin={handleLogin}> </Login>}
-            />
-          </Routes>
-        
+        <Header currentUserEmail={currentUserEmail} onLogout={logOut} />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute loggedIn={isLoggedIn}>
+                <Main
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddCardClick}
+                  onEditAvatar={handleEditAvatarClick}
+                  cards={cards}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sign-up"
+            element={<Register onRegister={handleRegistration}></Register>}
+          />
+          <Route
+            path="/sign-in"
+            element={<Login onLogin={handleLogin}> </Login>}
+          />
+        </Routes>
 
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}

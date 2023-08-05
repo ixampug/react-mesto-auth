@@ -9,7 +9,6 @@ export default function Auth(props) {
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    
     const isFormValid = Object.values(errors).every((error) => !error);
     setIsValid(isFormValid);
   }, [errors]);
@@ -51,9 +50,7 @@ export default function Auth(props) {
         placeholder="Email"
         required
       />
-      <span className="auth__input auth__input_type_error">
-        {errors.email}
-      </span>
+      <span className="auth__input auth__input_type_error">{errors.email}</span>
       <input
         type="password"
         id="password"
@@ -70,9 +67,7 @@ export default function Auth(props) {
       </span>
       <button
         type="submit"
-        className={`auth__submit ${
-          !isValid && `auth__submit_disabled`
-        }`}
+        className={`auth__submit ${!isValid && `auth__submit_disabled`}`}
         disabled={!isValid}
       >
         {props.buttonText}
